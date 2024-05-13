@@ -51,12 +51,12 @@ namespace ChapelInventoryManagement
                 {
                     if (int.TryParse(txtID.Text, out int itemID))
                     {
-                        OleDbCommand chkBook = new OleDbCommand("SELECT [ItemID] FROM Items WHERE [ItemID] = @ItemID", con);
-                        chkBook.Parameters.AddWithValue("ItemID", itemID);
+                        OleDbCommand chkItem = new OleDbCommand("SELECT [ItemID] FROM Items WHERE [ItemID] = @ItemID", con);
+                        chkItem.Parameters.AddWithValue("ItemID", itemID);
 
-                        if (chkBook.ExecuteScalar() != null)
+                        if (chkItem.ExecuteScalar() != null)
                         {
-                            MessageBox.Show("Book is already Recorded!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Item is already Recorded!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -92,10 +92,10 @@ namespace ChapelInventoryManagement
                 }
                 else
                 {
-                    OleDbCommand chkBook = new OleDbCommand("SELECT [ItemID] FROM Items WHERE[ItemID] = @ItemID", con);
-                    chkBook.Parameters.AddWithValue("ItemID", txtID.Text);
+                    OleDbCommand chkItem = new OleDbCommand("SELECT [ItemID] FROM Items WHERE[ItemID] = @ItemID", con);
+                    chkItem.Parameters.AddWithValue("ItemID", txtID.Text);
 
-                    if (chkBook.ExecuteScalar() != null)
+                    if (chkItem.ExecuteScalar() != null)
                     {
                         OleDbCommand update = new OleDbCommand("UPDATE Items SET ItemName = @ItemName, Quantity = @Quantity, Availability = @Availability WHERE [ItemID] = @ItemID", con);
                         update.Parameters.AddWithValue("ItemID", txtID.Text);
@@ -126,10 +126,10 @@ namespace ChapelInventoryManagement
                 }
                 else
                 {
-                    OleDbCommand chkBook = new OleDbCommand("SELECT [ItemID] FROM Items WHERE [ItemID] = @ItemID", con);
-                    chkBook.Parameters.AddWithValue("ItemID", txtID.Text);
+                    OleDbCommand chkItem = new OleDbCommand("SELECT [ItemID] FROM Items WHERE [ItemID] = @ItemID", con);
+                    chkItem.Parameters.AddWithValue("ItemID", txtID.Text);
 
-                    if (chkBook.ExecuteScalar() != null)
+                    if (chkItem.ExecuteScalar() != null)s
                     {
                         DialogResult response = MessageBox.Show("Are you sure you want to delete this record?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
