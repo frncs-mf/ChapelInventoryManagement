@@ -27,9 +27,9 @@ namespace ChapelInventoryManagement
             {
                 con.Open();
 
-                OleDbCommand books = new OleDbCommand("SELECT * FROM Books", con);
+                OleDbCommand items = new OleDbCommand("SELECT * FROM Items", con);
 
-                OleDbDataAdapter adap = new OleDbDataAdapter(books);
+                OleDbDataAdapter adap = new OleDbDataAdapter(items);
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
 
@@ -97,11 +97,11 @@ namespace ChapelInventoryManagement
 
                     if (chkBook.ExecuteScalar() != null)
                     {
-                        OleDbCommand update = new OleDbCommand("UPDATE Items SET ItemName = @ItemName, Availability = @Availability, Quantity = @Quantity WHERE [ItemID] = @ItemID", con);
+                        OleDbCommand update = new OleDbCommand("UPDATE Items SET ItemName = @ItemName, Quantity = @Quantity, Availability = @Availability WHERE [ItemID] = @ItemID", con);
                         update.Parameters.AddWithValue("ItemID", txtID.Text);
                         update.Parameters.AddWithValue("ItemName", txtItem.Text);
-                        update.Parameters.AddWithValue("Availability", txtAvail.Text);
                         update.Parameters.AddWithValue("Quantity", txtQty.Text);
+                        update.Parameters.AddWithValue("Availability", txtAvail.Text);
                         update.ExecuteNonQuery();
 
                         MessageBox.Show("Item Successfully Updated!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -162,7 +162,7 @@ namespace ChapelInventoryManagement
         {
             con.Open();
 
-            OleDbCommand searchCmd = new OleDbCommand("SELECT * FROM Books WHERE CONCAT([ItemID], ' ', ItemName, ' ', Availability, ' ', Quantity) LIKE @searchString", con);
+            OleDbCommand searchCmd = new OleDbCommand("SELECT * FROM Items WHERE ([ItemID] & ' ' & ItemName & ' ' & Availability & ' ' & Quantity) LIKE @searchString", con);
             searchCmd.Parameters.AddWithValue("searchString", "%" + txtSearch.Text + "%");
             searchCmd.ExecuteNonQuery();
 
@@ -175,6 +175,6 @@ namespace ChapelInventoryManagement
             con.Close();
         }
 
-        
+
     }
 }
