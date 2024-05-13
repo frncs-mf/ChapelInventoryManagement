@@ -129,7 +129,7 @@ namespace ChapelInventoryManagement
                     OleDbCommand chkItem = new OleDbCommand("SELECT [ItemID] FROM Items WHERE [ItemID] = @ItemID", con);
                     chkItem.Parameters.AddWithValue("ItemID", txtID.Text);
 
-                    if (chkItem.ExecuteScalar() != null)s
+                    if (chkItem.ExecuteScalar() != null)
                     {
                         DialogResult response = MessageBox.Show("Are you sure you want to delete this record?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
