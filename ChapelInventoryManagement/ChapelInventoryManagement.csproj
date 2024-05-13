@@ -52,6 +52,12 @@
     <Compile Include="CustomProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Borrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrow.Designer.cs">
+      <DependentUpon>Borrow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Items.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Borrow.resx">
+      <DependentUpon>Borrow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items.resx">
       <DependentUpon>Items.cs</DependentUpon>
     </EmbeddedResource>

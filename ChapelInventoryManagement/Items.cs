@@ -68,6 +68,7 @@ namespace ChapelInventoryManagement
                             add.ExecuteNonQuery();
 
                             MessageBox.Show("Item Successfully Added!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loaddatagrid();
                         }
                     }
                     else
@@ -105,6 +106,7 @@ namespace ChapelInventoryManagement
                         update.ExecuteNonQuery();
 
                         MessageBox.Show("Item Successfully Updated!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loaddatagrid();
                     }
                     else
                     {
@@ -140,6 +142,7 @@ namespace ChapelInventoryManagement
                             delete.ExecuteNonQuery();
 
                             MessageBox.Show("Item Successfully Deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loaddatagrid();
                         }
                     }
                     else
